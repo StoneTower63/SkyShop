@@ -1,28 +1,31 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static void main(String[] args) {
 
-        Product bread = new Product("Хлеб", 56);
-        Product milk = new Product("Молоко", 124);
-        Product meat = new Product("Мясо", 1200);
-        Product eggs = new Product("Яйца", 104);
-        Product cheese = new Product("Сыр", 207);
-        Product oil = new Product("Масло", 189);
+        Product bread = new SimpleProduct("Хлеб", 56);
+        Product milk = new SimpleProduct("Молоко", 124);
+        Product meat = new SimpleProduct("Мясо", 1200);
+        Product eggs = new SimpleProduct("Яйца", 104);
+        Product tomatoes = new DiscountedProduct("Помидоры", 390, 20);
+        Product bananas = new FixPriceProduct("Бананы");
 
         System.out.println("Задание 1");
         ProductBasket basketOne = new ProductBasket();
         basketOne.addProduct(bread);
         basketOne.addProduct(milk);
         basketOne.addProduct(meat);
-        basketOne.addProduct(eggs);
-        basketOne.addProduct(cheese);
+        basketOne.addProduct(bananas);
+        basketOne.addProduct(tomatoes);
 
         System.out.println("Задание 2");
-        basketOne.addProduct(oil);
+        basketOne.addProduct(bananas);
 
         System.out.println("Задание 3 и 4");
         basketOne.printBasket();
