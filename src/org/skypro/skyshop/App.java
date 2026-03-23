@@ -5,6 +5,8 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.article.Article;
 
 public class App {
     public static void main(String[] args) {
@@ -44,6 +46,32 @@ public class App {
 
         System.out.println("Задание 10");
         System.out.println(basketOne.containsProduct("Мясо"));
+
+        //Полиморфизм. Интерфейсы
+
+        SearchEngine engine = new SearchEngine(15);
+
+        engine.add(bread);
+        engine.add(milk);
+        engine.add(meat);
+        engine.add(eggs);
+        engine.add(tomatoes);
+        engine.add(bananas);
+
+        Article breadArticle = new Article("О пользе хлеба", "Хлеб всему голова...");
+        Article meatArticle = new Article("Как готовить мясо", "Мясо лучше всего жарить...");
+
+        engine.add(breadArticle);
+        engine.add(meatArticle);
+
+        System.out.println("\n Результаты поиска по слову 'Хлеб' ");
+        System.out.println(java.util.Arrays.toString(engine.search("Хлеб")));
+
+        System.out.println("\n Результаты поиска по слову 'Мясо' ");
+        System.out.println(java.util.Arrays.toString(engine.search("Мясо")));
+
+        System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
+        System.out.println(java.util.Arrays.toString(engine.search("Штора")));
 
     }
 }
