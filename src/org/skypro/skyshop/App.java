@@ -73,5 +73,34 @@ public class App {
         System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
         System.out.println(java.util.Arrays.toString(engine.search("Штора")));
 
+        //Исключения
+
+        try {
+            SimpleProduct p = new SimpleProduct(" ", -11);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Название продукта не может быть пустым или состоять только из пробелов");
+        }
+
+        try {
+            DiscountedProduct d = new DiscountedProduct("", 0, 110);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Название продукта не может быть пустым или состоять только из пробелов");
+        }
+
+
+        System.out.println("\nПоиск лучшего результата по слову 'Мясо':");
+        try {
+            System.out.println(engine.searchBest("Мясо").getSearchTerm());
+        } catch (Exception e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+        System.out.println("\nПоиск лучшего результата по слову 'Штора':");
+        try {
+            System.out.println(engine.searchBest("Штора").getSearchTerm());
+        } catch (Exception e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
     }
 }
