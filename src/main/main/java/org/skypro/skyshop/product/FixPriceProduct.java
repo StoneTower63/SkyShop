@@ -1,4 +1,4 @@
-package org.skypro.skyshop.product;
+package main.main.java.org.skypro.skyshop.product;
 
 public class FixPriceProduct extends Product {
     private static final int FIX_PRICE = 100;

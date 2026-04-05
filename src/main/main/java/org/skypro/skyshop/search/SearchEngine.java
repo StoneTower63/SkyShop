@@ -1,4 +1,4 @@
-package org.skypro.skyshop.search;
+package main.main.java.org.skypro.skyshop.search;
 
 public class SearchEngine {
 

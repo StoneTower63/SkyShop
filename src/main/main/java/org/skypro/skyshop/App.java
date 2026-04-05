@@ -1,12 +1,12 @@
-package org.skypro.skyshop;
+package main.main.java.org.skypro.skyshop;
 
-import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.SimpleProduct;
-import org.skypro.skyshop.search.SearchEngine;
-import org.skypro.skyshop.article.Article;
+import main.main.java.org.skypro.skyshop.basket.ProductBasket;
+import main.main.java.org.skypro.skyshop.product.DiscountedProduct;
+import main.main.java.org.skypro.skyshop.product.FixPriceProduct;
+import main.main.java.org.skypro.skyshop.product.Product;
+import main.main.java.org.skypro.skyshop.product.SimpleProduct;
+import main.main.java.org.skypro.skyshop.search.SearchEngine;
+import main.main.java.org.skypro.skyshop.article.Article;
 
 public class App {
     public static void main(String[] args) {

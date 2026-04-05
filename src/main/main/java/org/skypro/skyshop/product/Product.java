@@ -1,6 +1,6 @@
-package org.skypro.skyshop.product;
+package main.main.java.org.skypro.skyshop.product;
 
-import org.skypro.skyshop.search.Searchable;
+import main.main.java.org.skypro.skyshop.search.Searchable;
 
 public abstract class Product implements Searchable {
     private final String name;
