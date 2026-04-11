@@ -1,6 +1,7 @@
 package org.skypro.skyshop.basket;
 
 
+
 import org.skypro.skyshop.product.Product;
 
 public class ProductBasket {
@@ -12,12 +13,15 @@ public class ProductBasket {
             this.products[size] = product;
             size++;
         } else System.out.println("Невозможно добавить продукт");
+
     }
 
     public int getTotalCost() {
         int total = 0;
         for (Product product : products) {
+
             if (product != null) total += product.getPrice();
+
         }
         return total;
     }
@@ -42,6 +46,7 @@ public class ProductBasket {
     public boolean containsProduct(String name) {
         for (Product product : products) {
             if (product != null && name.equals(product.getName())) return true;
+
         }
         return false;
     }
@@ -53,5 +58,6 @@ public class ProductBasket {
             }
         }
         size = 0;
+
     }
 }

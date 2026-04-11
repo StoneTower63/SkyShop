@@ -1,5 +1,6 @@
 package org.skypro.skyshop.search;
 
+
 public class SearchEngine {
 
     private final Searchable[] searchables;
@@ -61,4 +62,5 @@ public class SearchEngine {
         }
         return count;
     }
+
 }
