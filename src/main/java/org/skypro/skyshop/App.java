@@ -1,12 +1,14 @@
-package main.main.java.org.skypro.skyshop;
+package org.skypro.skyshop;
 
-import main.main.java.org.skypro.skyshop.basket.ProductBasket;
-import main.main.java.org.skypro.skyshop.product.DiscountedProduct;
-import main.main.java.org.skypro.skyshop.product.FixPriceProduct;
-import main.main.java.org.skypro.skyshop.product.Product;
-import main.main.java.org.skypro.skyshop.product.SimpleProduct;
-import main.main.java.org.skypro.skyshop.search.SearchEngine;
-import main.main.java.org.skypro.skyshop.article.Article;
+
+import org.skypro.skyshop.article.Article;
+import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.search.BestResultNotFound;
+import org.skypro.skyshop.search.SearchEngine;
 
 public class App {
     public static void main(String[] args) {
@@ -73,5 +75,28 @@ public class App {
         System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
         System.out.println(java.util.Arrays.toString(engine.search("Штора")));
 
+
+        System.out.println("\n--- Поиск самого подходящего элемента ---");
+
+        try {
+            System.out.println("Ищем лучший результат для 'Хлеб':");
+            System.out.println(engine.findBestMatch("Хлеб").getStringRepresentation());
+        } catch (BestResultNotFound e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("\nИщем лучший результат для 'Штора':");
+            System.out.println(engine.findBestMatch("Штора").getStringRepresentation());
+        } catch (BestResultNotFound e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\nПроверка валидации данных: ");
+        try {
+            new SimpleProduct("", 100);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании товара: " + e.getMessage());
+        }
     }
 }

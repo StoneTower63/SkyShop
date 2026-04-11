@@ -1,6 +1,7 @@
-package main.main.java.org.skypro.skyshop.article;
+package org.skypro.skyshop.article;
 
-import main.main.java.org.skypro.skyshop.search.Searchable;
+
+import org.skypro.skyshop.search.Searchable;
 
 public final class Article implements Searchable {
     private final String name;

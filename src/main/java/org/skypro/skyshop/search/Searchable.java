@@ -1,4 +1,4 @@
-package main.main.java.org.skypro.skyshop.search;
+package org.skypro.skyshop.search;
 
 public interface Searchable {
 

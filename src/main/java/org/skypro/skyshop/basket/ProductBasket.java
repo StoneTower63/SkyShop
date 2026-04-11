@@ -1,6 +1,7 @@
-package main.main.java.org.skypro.skyshop.basket;
+package org.skypro.skyshop.basket;
 
-import main.main.java.org.skypro.skyshop.product.Product;
+
+import org.skypro.skyshop.product.Product;
 
 public class ProductBasket {
     private final Product[] products = new Product[5];
@@ -29,7 +30,7 @@ public class ProductBasket {
             for (Product product : products) {
                 if (product != null) {
                     System.out.println(product.toString());
-                   if (product.isSpecial()) specialCount++;
+                    if (product.isSpecial()) specialCount++;
                 }
             }
             System.out.println("Итого: " + getTotalCost());

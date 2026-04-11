@@ -1,11 +1,14 @@
-package main.main.java.org.skypro.skyshop.product;
+package org.skypro.skyshop.product;
 
-import main.main.java.org.skypro.skyshop.search.Searchable;
+import org.skypro.skyshop.search.Searchable;
 
 public abstract class Product implements Searchable {
     private final String name;
 
     public Product(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Название товара не может быть пустым");
+        }
         this.name = name;
     }
 
