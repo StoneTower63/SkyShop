@@ -10,6 +10,9 @@ import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.search.BestResultNotFound;
 import org.skypro.skyshop.search.SearchEngine;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
 
@@ -20,7 +23,7 @@ public class App {
         Product tomatoes = new DiscountedProduct("Помидоры", 390, 20);
         Product bananas = new FixPriceProduct("Бананы");
 
-        System.out.println("Задание 1");
+
         ProductBasket basketOne = new ProductBasket();
         basketOne.addProduct(bread);
         basketOne.addProduct(milk);
@@ -28,25 +31,17 @@ public class App {
         basketOne.addProduct(bananas);
         basketOne.addProduct(tomatoes);
 
-        System.out.println("Задание 2");
-        basketOne.addProduct(bananas);
 
-        System.out.println("Задание 3 и 4");
         basketOne.printBasket();
 
-        System.out.println("Задание 5");
         System.out.println(basketOne.containsProduct("Яйца"));
 
-        System.out.println("Задание 6");
         System.out.println(basketOne.containsProduct("Гречка"));
 
-        System.out.println("Задание 7");
-        basketOne.clear();
+        //basketOne.clear();
 
-        System.out.println("Задание 8 и 9");
         basketOne.printBasket();
 
-        System.out.println("Задание 10");
         System.out.println(basketOne.containsProduct("Мясо"));
 
         //Полиморфизм. Интерфейсы
@@ -67,13 +62,13 @@ public class App {
         engine.add(meatArticle);
 
         System.out.println("\n Результаты поиска по слову 'Хлеб' ");
-        System.out.println(java.util.Arrays.toString(engine.search("Хлеб")));
+        System.out.println(engine.search("Хлеб"));
 
         System.out.println("\n Результаты поиска по слову 'Мясо' ");
-        System.out.println(java.util.Arrays.toString(engine.search("Мясо")));
+        System.out.println(engine.search("Мясо"));
 
         System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
-        System.out.println(java.util.Arrays.toString(engine.search("Штора")));
+        System.out.println(engine.search("Штора"));
 
 
         System.out.println("\n--- Поиск самого подходящего элемента ---");
@@ -98,5 +93,20 @@ public class App {
         } catch (IllegalArgumentException e) {
             System.out.println("Ошибка при создании товара: " + e.getMessage());
         }
+
+        //
+
+        List<Product> removed = basketOne.removeByName("Хлеб");
+
+        System.out.println("\nУдалено: " + removed + "\n");
+
+        basketOne.printBasket();
+
+        removed = basketOne.removeByName("Манго");
+
+        if (removed.isEmpty()) System.out.println("\nСписок пуст!\n");
+
+        basketOne.printBasket();
+
     }
 }

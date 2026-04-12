@@ -1,34 +1,27 @@
 package org.skypro.skyshop.search;
 
+import java.util.List;
+import java.util.LinkedList;
+
 public class SearchEngine {
 
-    private final Searchable[] searchables;
-    private int count = 0;
+    private final List<Searchable> searchables = new LinkedList<>();
 
     public SearchEngine(int size) {
-        this.searchables = new Searchable[size];
     }
 
     public void add(Searchable searchable) {
-        if (count < searchables.length) {
-            searchables[count] = searchable;
-            count++;
-        }
+        searchables.add(searchable);
     }
 
-    public Searchable[] search(String query) {
-        Searchable[] result = new Searchable[5];
-        int countMatches = 0;
+    public List<Searchable> search(String query) {
+        List<Searchable> result = new LinkedList<>();
 
-        for (int i = 0; i < count; i++) {
-            if (searchables[i].getSearchTerm().contains(query)) {
-                result[countMatches] = searchables[i];
-                countMatches++;
-
-                if (countMatches == 5) {
-                    break;
-                }
+        for (Searchable s : searchables) {
+            if (s.getSearchTerm().contains(query)) {
+                result.add(s);
             }
+
         }
         return result;
     }
@@ -37,11 +30,11 @@ public class SearchEngine {
         Searchable bestMatch = null;
         int maxCount = 0;
 
-        for (int i = 0; i < count; i++) {
-            int currentCount = countMatches(searchables[i].getSearchTerm(), query);
+        for (Searchable s : searchables) {
+            int currentCount = countMatches(s.getSearchTerm(), query);
             if (currentCount > maxCount) {
                 maxCount = currentCount;
-                bestMatch = searchables[i];
+                bestMatch = s;
             }
         }
 
