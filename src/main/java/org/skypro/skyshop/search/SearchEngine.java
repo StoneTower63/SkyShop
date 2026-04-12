@@ -1,6 +1,5 @@
 package org.skypro.skyshop.search;
 
-import static java.awt.SystemColor.text;
 
 public class SearchEngine {
 
@@ -35,34 +34,31 @@ public class SearchEngine {
         return result;
     }
 
-    public Searchable searchBest(String search) throws BestResultNotFound {
-        Searchable best = null;
-        int maxRepeats = 0;
+    public Searchable findBestMatch(String query) throws BestResultNotFound {
+        Searchable bestMatch = null;
+        int maxCount = 0;
+
         for (int i = 0; i < count; i++) {
-            String text = searchables[i].getSearchTerm();
-            int repeats = countOccurrences(text, search);
-            if (repeats > maxRepeats) {
-                maxRepeats = repeats;
-                best = searchables[i];
+            int currentCount = countMatches(searchables[i].getSearchTerm(), query);
+            if (currentCount > maxCount) {
+                maxCount = currentCount;
+                bestMatch = searchables[i];
             }
         }
-        if (best == null) {
-            throw new BestResultNotFound(search);
-        } else {
-            return best;
+
+        if (bestMatch == null) {
+            throw new BestResultNotFound(query);
         }
 
+        return bestMatch;
     }
 
-    private int countOccurrences(String text, String search) {
+    private int countMatches(String text, String query) {
         int count = 0;
         int index = 0;
-        int foundIndex = text.indexOf(search, index);
-
-        while (foundIndex != -1) {
+        while ((index = text.indexOf(query, index)) != -1) {
             count++;
-            index = foundIndex + search.length();
-            foundIndex = text.indexOf(search, index);
+            index += query.length();
         }
         return count;
     }
