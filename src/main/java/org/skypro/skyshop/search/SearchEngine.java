@@ -2,6 +2,8 @@ package org.skypro.skyshop.search;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class SearchEngine {
 
@@ -14,14 +16,12 @@ public class SearchEngine {
         searchables.add(searchable);
     }
 
-    public List<Searchable> search(String query) {
-        List<Searchable> result = new LinkedList<>();
-
+    public Map<String, Searchable> search(String query) {
+        Map<String, Searchable> result = new TreeMap<>();
         for (Searchable s : searchables) {
             if (s.getSearchTerm().contains(query)) {
-                result.add(s);
+                result.put(s.getName(), s);
             }
-
         }
         return result;
     }
