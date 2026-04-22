@@ -9,6 +9,7 @@ import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.search.BestResultNotFound;
 import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.search.Searchable;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -62,14 +63,20 @@ public class App {
         engine.add(meatArticle);
 
         System.out.println("\n Результаты поиска по слову 'Хлеб' ");
-        System.out.println(engine.search("Хлеб"));
+        for (Searchable s : engine.search("Хлеб").values()) {
+            System.out.println(s);
+        }
+
 
         System.out.println("\n Результаты поиска по слову 'Мясо' ");
-        System.out.println(engine.search("Мясо"));
+        for (Searchable s : engine.search("Мясо").values()) {
+            System.out.println(s);
+        }
 
         System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
-        System.out.println(engine.search("Штора"));
-
+        for (Searchable s : engine.search("Штора").values()) {
+            System.out.println(s);
+        }
 
         System.out.println("\n--- Поиск самого подходящего элемента ---");
 
