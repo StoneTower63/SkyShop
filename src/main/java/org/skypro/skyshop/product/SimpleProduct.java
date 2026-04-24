@@ -8,6 +8,7 @@ public class SimpleProduct extends Product {
         if (price <= 0) {
             throw new IllegalArgumentException("Цена должна быть больше 0");
         }
+
         this.price = price;
     }
 
@@ -25,4 +26,5 @@ public class SimpleProduct extends Product {
     public boolean isSpecial() {
         return false;
     }
+
 }

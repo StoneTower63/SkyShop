@@ -33,5 +33,6 @@ public class DiscountedProduct extends Product {
     @Override
     public boolean isSpecial() {
         return true;
+
     }
 }
