@@ -55,6 +55,7 @@ public class App {
         engine.add(eggs);
         engine.add(tomatoes);
         engine.add(bananas);
+        engine.add(new SimpleProduct("Хлеб", 100));
 
         Article breadArticle = new Article("О пользе хлеба", "Хлеб всему голова...");
         Article meatArticle = new Article("Как готовить мясо", "Мясо лучше всего жарить...");
@@ -63,18 +64,18 @@ public class App {
         engine.add(meatArticle);
 
         System.out.println("\n Результаты поиска по слову 'Хлеб' ");
-        for (Searchable s : engine.search("Хлеб").values()) {
+        for (Searchable s : engine.search("Хлеб")) {
             System.out.println(s);
         }
 
 
         System.out.println("\n Результаты поиска по слову 'Мясо' ");
-        for (Searchable s : engine.search("Мясо").values()) {
+        for (Searchable s : engine.search("Мясо")) {
             System.out.println(s);
         }
 
         System.out.println("\n Результаты поиска по слову 'Штора' (ничего не найдет) ");
-        for (Searchable s : engine.search("Штора").values()) {
+        for (Searchable s : engine.search("Штора")) {
             System.out.println(s);
         }
 
